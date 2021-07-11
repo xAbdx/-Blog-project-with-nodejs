@@ -17,63 +17,12 @@ mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
 app.set('view engine', 'ejs');
 // app.set('views', 'myviews');
 
-
-// used morgan package instead
-// app.use((req, res, next) => {
-//     console.log('New request made:');
-//     console.log('Host: ', req.hostname);
-//     console.log('Path: ', req.path);
-//     console.log('Method: ', req.method);
-//     next();
-// });
-
 // morgan (middleware)
 app.use(morgan('dev')); //dev, tiny
-
-// mongoose and mongo sandbox routes
-// the idea about getting the data from the db
-// app.get('/add-blog', (req, res) => {
-//     const blog = new Blog({
-//         title: 'new blog 2',
-//         snippet: 'about my new blog',
-//         body: 'more about my new blog'
-//     });
-
-//     blog.save()
-//         .then((result) => {
-//             res.send(result);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// });
-
-// app.get('/all-blogs', (req, res) => {
-//     Blog.find()
-//         .then((result) => {
-//             res.send(result);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// });
-
-// app.get('/single-blog', (req, res) => {
-//     Blog.findById('60e631d2083c5e1f8059dceb')
-//         .then((result) => {
-//             res.send(result);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// });
-
 
 // static files
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true })); //middleware or .json() instead of urlencoded
-
-
 
 // routes
 app.get('/', (req, res) => {
